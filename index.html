@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Multiplayer Rock Paper Scissors</title>
+	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyAperoetWA6p0dCh4i3bw378HG5-El52Xk",
+	    authDomain: "multiplayer-rps-fe61d.firebaseapp.com",
+	    databaseURL: "https://multiplayer-rps-fe61d.firebaseio.com",
+	    projectId: "multiplayer-rps-fe61d",
+	    storageBucket: "",
+	    messagingSenderId: "482976917910"
+	  };
+	  firebase.initializeApp(config);
+	  var database = firebase.database();
+	</script>
+</head>
+<body>
+	<button onclick="rockClick()">Rock</button>
+	<button onclick="scissorsClick()">Scissors</button>
+	<button onclick="paperClick()">Paper</button>
+	<br>
+	<p id="score">hey</p>
+	<script type="text/javascript">
+		var players = {
+			1: {
+				name: '',
+				choice: '',
+				wins: 0,
+				losses: 0,
+			},
+			2: {
+				name: '',
+				choice: '',
+				wins: 0,
+				losses: 0,
+			},
+		}
+		//enter name
+			//if player 2 name exists clear both 1 and 2
+			//if name for player 1 exisits exists become player 2
+			//log name in respective object
+				//display page that says waiting for opponent
+
+		//game
+			//click rock paper or scissors
+				//log in respective object
+				//compare to other choice
+					//if exists select win or loss
+					//if doesn't exist let hang till other player logs
+
+
+
+
+
+	// Legacy rock paper scissors game
+		// var user = 0;
+		// var comp = "";
+		// var winner = 0;
+		// var loser = 0;
+		// var tie = 0;
+
+		// function paperClick() {
+		// 	var test = getRandomArbitrary();
+		// 	if (test === "rock") {
+		// 		winner++;
+		// 		var node = document.getElementById('score');
+		// 		node.innerHTML = ("<p>wins: " + winner + "</p>" + "<p>losses: " + loser + "</p>" + "<p>ties: " + tie + "</p>");
+		// 	}
+		// 	else if (test === "scissors") {
+		// 		loser++;
+		// 		var node = document.getElementById('score');
+		// 		node.innerHTML = ("<p>wins: " + winner + "</p>" + "<p>losses: " + loser + "</p>" + "<p>ties: " + tie + "</p>");
+		// 		}
+		// 	else {
+		// 		tie++;
+		// 		var node = document.getElementById('score');
+		// 		node.innerHTML = ("<p>wins: " + winner + "</p>" + "<p>losses: " + loser + "</p>" + "<p>ties: " + tie + "</p>");
+		// 	}
+		// }
+
+		// function getRandomArbitrary() {
+		//   var number = Math.floor(Math.random() * (3 - 0)) + 0;
+		//   if (number==0) {
+		// 	return comp = "rock";
+		//   }
+		//   else if (number==1){
+		// 	return comp = "scissors";
+		//   }
+		//   else {
+		// 	return comp = "paper";
+		//   }
+		// }
+
+		// function rockClick() {
+		//   var test = getRandomArbitrary();
+		//   if (test === "scissors") {
+		// 	  winner++;
+		// 	  var node = document.getElementById('score');
+		// 	  node.innerHTML = ("<p>wins: " + winner + "</p>" + "<p>losses: " + loser + "</p>" + "<p>ties: " + tie + "</p>");
+		// 	}
+		//   else if (test === "paper") {
+		// 	  loser++;
+		// 	  var node = document.getElementById('score');
+		// 	  node.innerHTML = ("<p>wins: " + winner + "</p>" + "<p>losses: " + loser + "</p>" + "<p>ties: " + tie + "</p>");
+		// 	}
+		//   else {
+		// 	  tie++;
+		// 	  var node = document.getElementById('score');
+		// 	  node.innerHTML = ("<p>wins: " + winner + "</p>" + "<p>losses: " + loser + "</p>" + "<p>ties: " + tie + "</p>");
+		// 	}
+		// }
+
+		// function scissorsClick() {
+		// 	var test = getRandomArbitrary();
+		// 	if (test === "paper") {
+		// 		winner++;
+		// 		var node = document.getElementById('score');
+		// 		node.innerHTML = ("<p>wins: " + winner + "</p>" + "<p>losses: " + loser + "</p>" + "<p>ties: " + tie + "</p>");
+		// 		}
+		// 	else if (test === "rock") {
+		// 		loser++;
+		// 		var node = document.getElementById('score');
+		// 		node.innerHTML = ("<p>wins: " + winner + "</p>" + "<p>losses: " + loser + "</p>" + "<p>ties: " + tie + "</p>"); 
+		// 		}
+		// 	else {
+		// 		tie++;
+		// 		var node = document.getElementById('score');
+		// 		node.innerHTML = ("<p>wins: " + winner + "</p>" + "<p>losses: " + loser + "</p>" + "<p>ties: " + tie + "</p>");
+		// 		}
+		// 	}   
+
+		// var node = document.getElementById('score');
+		// node.innerHTML = ("<p>wins: " + winner + "</p>" + "<p>losses: " + loser + "</p>" + "<p>ties: " + tie + "</p>");    
+	</script>
+
+</body>
+</html>
