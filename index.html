@@ -2,6 +2,8 @@
 <html>
 <head>
 	<title>Multiplayer Rock Paper Scissors</title>
+	<!-- Latest compiled and minified CSS & JS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
 	<script>
@@ -19,26 +21,162 @@
 	</script>
 </head>
 <body>
-	<button onclick="rockClick()">Rock</button>
-	<button onclick="scissorsClick()">Scissors</button>
-	<button onclick="paperClick()">Paper</button>
-	<br>
-	<p id="score">hey</p>
+	<div class='container'>
+		<div class='jumbotron text-center'>
+			<h1 class=''>Rock Paper AND Scissors</h1>
+			<h3 id='player'>Hello Player Name, you're player #</h3>
+		</div>
+		<div class='panel panel-default text-center'>
+			<div class='panel-heading'>
+				<h4>Game center</h4>
+			</div>
+			<div class='panel-body'>
+				<div class="col-lg-4" id='rps'>
+					<p id="rock">Rock</p>
+					<p id="paper">Paper</p>
+					<p id="scissors">Scissors</p>
+				</div>
+				<div class="col-lg-4">
+					Results
+				</div>
+				<div class="col-lg-4">
+					<p id='rock2'>Rock</p>
+					<p id='paper2'>Paper</p>
+					<p id='scissors2'>Scissors</p>
+				</div>
+			</div>
+		</div>
+		<div class='panel panel-default text-center'>
+			<div class='panel-heading'>
+				<h4>Score</h4>
+			</div>
+			<div class='panel-body'>
+				<div>
+					Display wins of who's screen you're on
+				</div>
+			</div>
+		</div>
+	</div>
 	<script type="text/javascript">
-		var players = {
-			1: {
-				name: '',
-				choice: '',
-				wins: 0,
-				losses: 0,
-			},
-			2: {
-				name: '',
-				choice: '',
-				wins: 0,
-				losses: 0,
-			},
+		//declare vars
+		var name1 = "Max";
+		var name2 = "Shaina";
+		var choice1 = 0;
+		var choice2 = 0;
+		var wins1 = 0;
+		var wins2 = 0;
+
+
+		// var name = prompt("what's your name");
+	 //    database.ref().on("value", function(snapshot) {
+	 //    	//log it
+	 //    	console.log(snapshot.child(1).val());
+	 //    	//write it
+	 //    	// $("#click-value").html(snapshot.val().clickCount);
+	 //    	//make the counter equal to the database at first
+	 //    	// clickCounter = snapshot.val().clickCount;
+	 //    	//on error log it.
+	 //    }, function(errorObject) {
+	 //    	console.log("The read failed: " + errorObject.code);
+	 //    });
+	 //    console.log(database.child(1).val());
+
+	 		// database.ref().set({
+		// 	1: {
+		// 		name: '',
+		// 		choice: '',
+		// 		wins: 0,
+		// 		losses: 0,
+		// 	},
+		// 	2: {
+		// 		name: '',
+		// 		choice: '',
+		// 		wins: 0,
+		// 		losses: 0,
+		// 	},
+		// })
+
+
+
+	    $('#rock').on('click', function(event) {
+	    	choice1 = 'rock'
+	    	testing();
+	    })
+	   	$('#paper').on('click', function(event) {
+	    	choice1 = 'paper'
+	    	testing();
+	    })
+	    $('#scissors').on('click', function(event) {
+	    	choice1 = 'scissors'
+	    	testing();
+	    })
+	    $('#rock2').on('click', function(event) {
+	    	choice2 = 'rock'
+	    	testing();
+	    })
+	    $('#paper2').on('click', function(event) {
+	    	choice2 = 'paper'
+	    	testing();
+	    })
+	    $('#scissors2').on('click', function(event) {
+	    	choice2 = 'scissors'
+	    	testing();
+	    })
+
+	    var clearChoice = function(){
+	    	choice2 = 0;
+	    	choice1 = 0;
+	    }
+
+	    var paper = function() {
+			if (choice2 === "rock"){
+							wins1++;
+							console.log('wins1' + wins1)}
+			else if (choice2 === "scissors"){
+							wins2++;
+							console.log(wins2)}
+			else
+				console.log('tie');
 		}
+		var rock = function() {
+			if (choice2 === "paper"){
+							wins2++;
+							console.log(wins2)}
+			else if (choice2 === "scissors"){
+							wins1++;
+							console.log('wins1' + wins1)}
+			else
+				console.log('tie');
+		}
+		var scissors = function() {
+			if (choice2 === "rock"){
+							wins2++;
+							console.log(wins2)}
+			else if (choice2 === "paper"){
+							wins1++;
+							console.log('wins1' + wins1)}
+			else
+				console.log('tie');
+		}
+
+	    var testing = function(){
+	    	if (choice1 && choice2){
+		    	if (choice1 === 'rock'){
+		    		rock();
+		    		clearChoice();
+		    	}
+		    	else if (choice1 === 'paper'){
+		    		paper();
+		    		clearChoice();
+		    	}
+		    	else {
+		    		scissors();
+		    		clearChoice();
+		    	}
+	    	};
+	    };
+
+
 		//enter name
 			//if player 2 name exists clear both 1 and 2
 			//if name for player 1 exisits exists become player 2
@@ -54,6 +192,19 @@
 
 
 
+	//Legacy database for reference
+		// database.ref().on("child_added", function(snapshot) {
+		// 	var now = moment().format();
+		// 	var convertedDate = moment(snapshot.val().startDate).format();
+		// 	var diff = moment(now).diff(convertedDate,'months')
+		// 	var bill = diff*snapshot.val().rate
+		// 	$('#trash').append('<tr><td>'+snapshot.val().name+'</td><td>'+snapshot.val().role+'</td><td>'+snapshot.val().startDate+'</td><td>'+ diff +'</td><td>'+snapshot.val().rate+'</td><td>'+ bill +'</td></tr>')
+		// });
+
+		// $("#submit").on("click", function(event){
+		//     event.preventDefault();
+			
+		// });
 
 
 	// Legacy rock paper scissors game
